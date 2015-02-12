@@ -1,0 +1,35 @@
+##  <authorizationEntry topic="OpenHab.<OHID>.>" read="users" write="ohg-<OHID>,admins" admin="ohg-<OHID>,admins" />
+
+dn: cn=OpenHab.<OHID>.$,ou=Topic,ou=Destination,ou=ActiveMQ,dc=effedil,dc=it
+objectClass: applicationProcess
+objectClass: top
+cn: OpenHab.<OHID>.$
+description: A Topic
+
+dn: cn=admin,cn=OpenHab.<OHID>.$,ou=Topic,ou=Destination,ou=ActiveMQ,dc=effedil,dc=it
+objectClass: groupOfNames
+objectClass: top
+cn: admin
+description: Admin privilege group, members are roles
+member: uid=oh-<OHID>,ou=User,ou=ActiveMQ,dc=effedil,dc=it
+member: cn=admins,ou=Group,ou=ActiveMQ,dc=effedil,dc=it
+
+dn: cn=read,cn=OpenHab.<OHID>.$,ou=Topic,ou=Destination,ou=ActiveMQ,dc=effedil,dc=it
+objectClass: groupOfNames
+objectClass: top
+cn: read
+description: Read privilege group, members are roles
+member: cn=users,ou=Group,ou=ActiveMQ,dc=effedil,dc=it
+
+#member: cn=ohg-<OHID>,ou=Group,ou=ActiveMQ,dc=effedil,dc=it
+#member: cn=admins,ou=Group,ou=ActiveMQ,dc=effedil,dc=it
+
+dn: cn=write,cn=OpenHab.<OHID>.$,ou=Topic,ou=Destination,ou=ActiveMQ,dc=effedil,dc=it
+objectClass: groupOfNames
+objectClass: top
+cn: write
+description: Write privilege group, members are roles
+member: uid=oh-<OHID>,ou=User,ou=ActiveMQ,dc=effedil,dc=it
+member: cn=admins,ou=Group,ou=ActiveMQ,dc=effedil,dc=it
+
+#
