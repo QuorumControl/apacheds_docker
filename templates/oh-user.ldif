@@ -1,0 +1,14 @@
+##################
+## Define users ##
+##################
+
+dn: uid=oh-<OHID>,ou=User,ou=ActiveMQ,dc=effedil,dc=it
+objectclass: inetOrgPerson
+objectclass: organizationalPerson
+objectclass: person
+objectclass: top
+uid: oh-<OHID>
+userPassword: <ldapPWD>
+cn: OpenHAB <OHID>
+sn: OpenHAB
+
