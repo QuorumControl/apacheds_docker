@@ -45,9 +45,15 @@ if [ -n "${ACCESS_CONTROL_ENABLED}" ]; then
   ldapmodify -c -a -f /tmp/access_config.ldif -h localhost -p 10389 -D "uid=admin,ou=system" -w ${ADMIN_PASSWORD}
 fi
 
+if [ -n "${ACTIVEMQ_ENABLED}" ]; then
+  envsubst < "/templates/activemq-domain.ldif" > "/tmp/activemq-domain.ldif"
+  ldapmodify -c -a -f /tmp/activemq-domain.ldif -h localhost -p 10389 -D "uid=admin,ou=system" -w ${ADMIN_PASSWORD}
+
+  envsubst < "/templates/new_openHAB.sh" > "/root/new_openHAB.sh"
+fi
+
 enable_replication
 setup_replication
-
 
 nohup /root/replica_check.sh 0<&- &> /tmp/replica_check.log &
 
