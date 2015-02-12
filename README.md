@@ -25,17 +25,20 @@ Currently this image uses various environment variables to properly startup, you
 ##Configurations
 
 * Configure main domain
+
 use DOMAIN_NAME and DOMAIN_SUFFIX to define the default domain:
 ```
 DOMAIN_NAME=effedil
 DOMAIN_SUFFIX=it
 ```
-* Change main admin password 
+* Change main admin password
+
 you can change the default admin password 'secret' passing the variable ADMIN_PASSWORD
 ```
 ADMIN_PASSWORD=mypassword
 ```
 * Enable ActiveMQ Access Control Entries
+
 you can enable ActiveMQ to use this ApacheDS instance as Authentication-Authorization service
 ``` 
 ACTIVEMQ_ENABLED=1
