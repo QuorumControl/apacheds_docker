@@ -1,0 +1,6 @@
+### add user to users group
+dn: cn=users,ou=Group,ou=ActiveMQ,dc=effedil,dc=it
+changetype: modify
+add: member
+member: uid=oh-<OHID>
+-
