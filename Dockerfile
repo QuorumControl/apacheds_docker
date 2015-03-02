@@ -18,4 +18,6 @@ COPY templates/* /templates/
 
 COPY scripts/* /root/
 
+ENV DOMAIN_NAME="effedil" DOMAIN_SUFFIX="it" ACCESS_CONTROL_ENABLED="true" ACTIVEMQ_ENABLED="true"
+
 ENTRYPOINT ["/root/start.sh"]
