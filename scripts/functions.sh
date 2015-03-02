@@ -1,5 +1,30 @@
 #!/bin/bash
 
+check_login () {
+  sleep 10
+  i="0"
+  err=1
+  while [[ $i -lt 10 && $err != 0 ]]
+    do
+        ldapwhoami -h localhost -p 10389 -D "uid=admin,ou=system" -w ${ADMIN_PASSWORD:-secret}
+        err=$?
+        if [ $err != 0 ]; then
+         echo "err = $err... looping"
+        else
+         echo "login ok"
+        fi   
+        i=$[$i+1]
+        sleep 2
+    done
+  
+  if [ $err != 0 ]; then
+      echo "login KO... exit"
+      exit -1
+  else
+     echo "login ok"
+  fi    
+}
+
 test_replication () 
 {
   REPLICATION=`ldapsearch -LLL \
