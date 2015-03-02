@@ -2,8 +2,14 @@
 . /root/functions.sh  --source-only
 
 /etc/init.d/apacheds-2.0.0-M19-default start
-/etc/init.d/xinetd start
+/etc/init.d/xinetd restart
 
+sleep 30
+RUNNING=`/etc/init.d/apacheds-2.0.0-M19-default status | grep not`
+if [ -n "${RUNNING}" ]; then
+ /etc/init.d/apacheds-2.0.0-M19-default restart
+ sleep 30
+fi
 
 check_login   
 
