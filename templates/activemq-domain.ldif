@@ -50,20 +50,20 @@ ou: Group
 dn: cn=admins,ou=Group,ou=ActiveMQ,dc=${DOMAIN_NAME},dc=${DOMAIN_SUFFIX}
 cn: admins
 member: uid=admin
+member: uid=remotebroker
 objectClass: groupOfNames
 objectClass: top
 
 dn: cn=users,ou=Group,ou=ActiveMQ,dc=${DOMAIN_NAME},dc=${DOMAIN_SUFFIX}
 cn: users
-member: uid=jdoe
 member: uid=admin
+member: uid=remotebroker
 objectClass: groupOfNames
 objectClass: top
 
 ##################
 ## Define users ##
 ##################
-
 
 dn: ou=User,ou=ActiveMQ,dc=${DOMAIN_NAME},dc=${DOMAIN_SUFFIX}
 objectClass: organizationalUnit
@@ -77,16 +77,15 @@ objectClass: account
 objectClass: simpleSecurityObject
 objectClass: top
 
-
-#dn: uid=jdoe,ou=User,ou=ActiveMQ,dc=${DOMAIN_NAME},dc=${DOMAIN_SUFFIX}
-#uid: jdoe
-#userPassword: {SSHA}YvMAkkd66cDecNoejo8jnw5uUUBziyl0
-#objectclass: inetOrgPerson
-#objectclass: organizationalPerson
-#objectclass: person
-#objectclass: top
-#cn: Jane Doe
-#sn: Doe
+dn: uid=remotebroker,ou=User,ou=ActiveMQ,dc=${DOMAIN_NAME},dc=${DOMAIN_SUFFIX}
+uid: remotebroker
+userPassword: {SSHA}YvMAkkd66cDecNoejo8jnw5uUUBziyl0
+objectclass: inetOrgPerson
+objectclass: organizationalPerson
+objectclass: person
+objectclass: top
+cn: Remote Broker
+sn: Broker
 
 #########################
 ## Define destinations ##
