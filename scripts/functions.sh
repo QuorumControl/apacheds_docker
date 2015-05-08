@@ -1,5 +1,17 @@
 #!/bin/bash
 
+check_partition () {
+ PARTITION=`ldapsearch -LLL \
+    -h localhost \
+    -p 10389 \
+    -D "uid=admin,ou=system" \
+    -w ${ADMIN_PASSWORD:=secret} \
+    -b "ou=partitions,ads-directoryServiceId=default,ou=config" \
+    -s sub "(ads-partitionId=${DOMAIN_NAME})"  \
+    dn`
+ echo PARTITION is $PARTITION   
+}
+
 check_login () {
   sleep 10
   i="0"
