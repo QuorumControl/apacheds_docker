@@ -1,6 +1,6 @@
 FROM traxair/oracle-java7
 
-RUN apt-get update && apt-get install -y xinetd ldap-utils curl jq
+RUN apt-get update && apt-get install -y xinetd ldap-utils curl jq gettext
 
 ADD https://www.apache.org/dist/directory/apacheds/dist/2.0.0-M19/apacheds-2.0.0-M19-amd64.deb /tmp/installer.deb
 RUN dpkg -i /tmp/installer.deb 
