@@ -38,6 +38,15 @@ objectClass: simpleSecurityObject
 userPassword: {SSHA}YvMAkkd66cDecNoejo8jnw5uUUBziyl0
 description: Bind user for MQ broker
 
+###################################################
+## adds admin permissions to mqbroker for domain ##
+###################################################
+dn: cn=adminGroup,ou=groups,dc=effedil,dc=it
+cn: adminGroup
+objectClass: groupOfNames
+objectClass: top
+member: cn=mqbroker,ou=Services,dc=effedil,dc=it
+
 ###################
 ## Define groups ##
 ###################
