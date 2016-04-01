@@ -14,7 +14,7 @@ Currently this image uses various environment variables to properly startup, you
 
 ##Example with boot2docker
 
-1. `docker run --name apacheds -d -p 10389:10389 effedil/apacheds-docker`
+1. `docker run --name apacheds -d -p 10389:10389 42score/apacheds-docker`
 2. Start Apache Directory Studio 
 3. In the bottom left corner there is a section called "Connections" Click on the "LDAP" icon to add a connection to your container. 
 4. Hostname: `192.168.59.103` and Port: `10389`
@@ -28,8 +28,8 @@ Currently this image uses various environment variables to properly startup, you
 
 use DOMAIN_NAME and DOMAIN_SUFFIX to define the default domain:
 ```
-DOMAIN_NAME=effedil
-DOMAIN_SUFFIX=it
+DOMAIN_NAME=score42
+DOMAIN_SUFFIX=eu
 ```
 * Change main admin password
 
