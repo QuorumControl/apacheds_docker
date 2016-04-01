@@ -1,13 +1,13 @@
 #!/bin/bash
 . /root/functions.sh  --source-only
 
-/etc/init.d/apacheds-2.0.0-M19-default start
+/etc/init.d/apacheds-2.0.0-M21-default start
 /etc/init.d/xinetd restart
 
 sleep 30
-RUNNING=`/etc/init.d/apacheds-2.0.0-M19-default status | grep not`
+RUNNING=`/etc/init.d/apacheds-2.0.0-M21-default status | grep not`
 if [ -n "${RUNNING}" ]; then
- /etc/init.d/apacheds-2.0.0-M19-default restart
+ /etc/init.d/apacheds-2.0.0-M21-default restart
  sleep 30
 fi
 
@@ -32,8 +32,8 @@ else
 
     if [ -n "${ACCESS_CONTROL_ENABLED}" ]; then
       ldapmodify -c -a -f /ldifs/access.ldif -h localhost -p 10389 -D "uid=admin,ou=system" -w ${ADMIN_PASSWORD}
-      /etc/init.d/apacheds-2.0.0-M19-default stop
-      /etc/init.d/apacheds-2.0.0-M19-default start
+      /etc/init.d/apacheds-2.0.0-M21-default stop
+      /etc/init.d/apacheds-2.0.0-M21-default start
       check_login
       
     fi
@@ -44,8 +44,8 @@ else
       ldapmodify -c -a -f /tmp/partition.ldif -h localhost -p 10389 -D "uid=admin,ou=system" -w ${ADMIN_PASSWORD}
       ldapdelete "ads-partitionId=example,ou=partitions,ads-directoryServiceId=default,ou=config" -r -p 10389 -h localhost -D "uid=admin,ou=system" -w ${ADMIN_PASSWORD}
       ldapdelete "dc=example,dc=com" -p 10389 -h localhost -D "uid=admin,ou=system" -r -w ${ADMIN_PASSWORD}
-      /etc/init.d/apacheds-2.0.0-M19-default stop
-      /etc/init.d/apacheds-2.0.0-M19-default start
+      /etc/init.d/apacheds-2.0.0-M21-default stop
+      /etc/init.d/apacheds-2.0.0-M21-default start
       
       check_login
       
@@ -76,5 +76,5 @@ setup_replication
 nohup /root/replica_check.sh 0<&- &> /tmp/replica_check.log &
 
 
-/etc/init.d/apacheds-2.0.0-M19-default stop
-/etc/init.d/apacheds-2.0.0-M19-default console
+/etc/init.d/apacheds-2.0.0-M21-default stop
+/etc/init.d/apacheds-2.0.0-M21-default console
