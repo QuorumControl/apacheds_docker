@@ -1,5 +1,5 @@
 ### add user to users group
-dn: cn=users,ou=Group,ou=ActiveMQ,dc=effedil,dc=it
+dn: cn=users,ou=Group,ou=ActiveMQ,dc=${DOMAIN_NAME},dc=${DOMAIN_SUFFIX}
 changetype: modify
 add: member
 member: uid=oh-<OHID>

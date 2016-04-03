@@ -41,11 +41,11 @@ description: Bind user for MQ broker
 ###################################################
 ## adds admin permissions to mqbroker for domain ##
 ###################################################
-dn: cn=adminGroup,ou=groups,dc=effedil,dc=it
+dn: cn=adminGroup,ou=groups,dc=${DOMAIN_NAME},dc=${DOMAIN_SUFFIX}
 cn: adminGroup
 objectClass: groupOfNames
 objectClass: top
-member: cn=mqbroker,ou=Services,dc=effedil,dc=it
+member: cn=mqbroker,ou=Services,dc=${DOMAIN_NAME},dc=${DOMAIN_SUFFIX}
 
 ###################
 ## Define groups ##

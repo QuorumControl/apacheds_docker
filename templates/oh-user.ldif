@@ -2,7 +2,7 @@
 ## Define users ##
 ##################
 
-dn: uid=oh-<OHID>,ou=User,ou=ActiveMQ,dc=effedil,dc=it
+dn: uid=oh-<OHID>,ou=User,ou=ActiveMQ,dc=${DOMAIN_NAME},dc=${DOMAIN_SUFFIX}
 objectclass: inetOrgPerson
 objectclass: organizationalPerson
 objectclass: person
@@ -11,4 +11,3 @@ uid: oh-<OHID>
 userPassword: <ldapPWD>
 cn: OpenHAB <OHID>
 sn: OpenHAB
-
