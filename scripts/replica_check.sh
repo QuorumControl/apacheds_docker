@@ -15,7 +15,7 @@ subtract_arrays()
     done
     [[ -n $skip ]] || RETURN_ARRAY+=("$i")
   done
-  echo ${RETURN_ARRAY[@]}
+  echo "${RETURN_ARRAY[@]}"
 }
 
 join_arrays()
@@ -28,13 +28,13 @@ join_arrays()
   for ((i=0;i<${#argAry1[@]};++i)); do
     RETURN_ARRAY+=("${argAry1[i]}:${argAry2[i]}")
   done
-  echo ${RETURN_ARRAY[@]}
+  echo "${RETURN_ARRAY[@]}"
 
 }
 
 while true
 do
-  echo "Start Checking" 
+  echo "Start Checking"
   find_marathon_replicas
 
   REPLICA_HOSTS_ARRAY=($(cat /root/CURRENT_REPLICA_HOSTS))
@@ -45,11 +45,11 @@ do
 
   RHP=($(join_arrays REPLICA_HOSTS_ARRAY[@] REPLICA_PORTS_ARRAY[@]))
   KHP=($(join_arrays KNOWN_HOSTS[@] KNOWN_PORTS[@]))
-  echo "RHP ${RHP[@]}" 
-  echo "KHP ${KHP[@]}" 
+  echo "RHP " * "${RHP[@]}"
+  echo "KHP " * "${KHP[@]}"
 
-  SORT_RH=(`echo ${RHP[@]} |  tr ' ' '\n' | sort`)
-  SORT_NH=(`echo ${KHP[@]} |  tr ' ' '\n' | sort`)
+  SORT_RH=(`echo "${RHP[@]}" |  tr ' ' '\n' | sort`)
+  SORT_NH=(`echo "${KHP[@]}" |  tr ' ' '\n' | sort`)
 
   DELETE_REPLICAS=($(subtract_arrays SORT_NH[@] SORT_RH[@]))
   ADD_REPLICAS=($(subtract_arrays SORT_RH[@] SORT_NH[@]))
@@ -66,8 +66,8 @@ do
     known_replicas
   done
 
-  echo "DELETE ${DELETE_REPLICAS[@]}" 
-  echo "ADD ${ADD_REPLICAS[@]}" 
+  echo "DELETE " * "${DELETE_REPLICAS[@]}"
+  echo "ADD " * "${ADD_REPLICAS[@]}"
 
   sleep 60
 

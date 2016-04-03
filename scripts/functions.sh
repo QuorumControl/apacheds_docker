@@ -9,7 +9,7 @@ check_partition () {
     -b "ou=partitions,ads-directoryServiceId=default,ou=config" \
     -s sub "(ads-partitionId=${DOMAIN_NAME})"  \
     dn`
- echo PARTITION is $PARTITION   
+ echo PARTITION is $PARTITION
 }
 
 check_login () {
@@ -24,20 +24,20 @@ check_login () {
          echo "err = $err... looping"
         else
          echo "login ok"
-        fi   
+        fi
         i=$[$i+1]
         sleep 2
     done
-  
+
   if [ $err != 0 ]; then
       echo "login KO... exit"
       exit -1
   else
      echo "login ok"
-  fi    
+  fi
 }
 
-test_replication () 
+test_replication ()
 {
   REPLICATION=`ldapsearch -LLL \
     -h localhost \
@@ -114,11 +114,11 @@ setup_replication ()
   find_marathon_replicas
   known_replicas
 
-  if [ ! -n "${RELICA_USER}"]; then
+  if [ ! -n "${RELICA_USER}" ]; then
     export RELICA_USER="admin"
   fi
 
-  if [ ! -n "$REPLICA_PASSWORD"]; then
+  if [ ! -n "$REPLICA_PASSWORD" ]; then
     export REPLICA_PASSWORD="${ADMIN_PASSWORD}"
   fi
 
