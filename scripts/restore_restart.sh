@@ -1,18 +1,18 @@
 #!/bin/bash
 . /root/functions.sh  --source-only
 
-cd /var/lib/apacheds-2.0.0-M21/default || exit
+cd /var/lib/apacheds-2.0.0-M23/default || exit
 rm -rf *
 cd / || exit
 tar xvf /backup/backup.tar
 
-/etc/init.d/apacheds-2.0.0-M21-default start
+/etc/init.d/apacheds-2.0.0-M23-default start
 /etc/init.d/xinetd restart
 
 sleep 30
-RUNNING=`/etc/init.d/apacheds-2.0.0-M21-default status | grep not`
+RUNNING=`/etc/init.d/apacheds-2.0.0-M23-default status | grep not`
 if [ -n "${RUNNING}" ]; then
- /etc/init.d/apacheds-2.0.0-M21-default restart
+ /etc/init.d/apacheds-2.0.0-M23-default restart
  sleep 30
 fi
 
@@ -34,5 +34,5 @@ setup_replication
 nohup /root/replica_check.sh 0<&- &> /tmp/replica_check.log &
 
 
-/etc/init.d/apacheds-2.0.0-M21-default stop
-/etc/init.d/apacheds-2.0.0-M21-default console
+/etc/init.d/apacheds-2.0.0-M23-default stop
+/etc/init.d/apacheds-2.0.0-M23-default console

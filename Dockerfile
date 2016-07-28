@@ -3,7 +3,7 @@ FROM java:8-jdk
 RUN apt-get update \
     && apt-get install -y xinetd ldap-utils curl jq gettext wget
 
-ENV APACHEDS_VERSION 2.0.0-M21
+ENV APACHEDS_VERSION 2.0.0-M23
 
 RUN wget -O /tmp/installer.deb https://www.apache.org/dist/directory/apacheds/dist/$APACHEDS_VERSION/apacheds-$APACHEDS_VERSION-amd64.deb \
     && dpkg -i /tmp/installer.deb && rm /tmp/installer.deb \
