@@ -60,14 +60,6 @@ else
       envsubst < "/templates/access_config.ldif" > "/tmp/access_config.ldif"
       ldapmodify -c -a -f /tmp/access_config.ldif -h localhost -p 10389 -D "uid=admin,ou=system" -w ${ADMIN_PASSWORD}
     fi
-
-    if [ -n "${ACTIVEMQ_ENABLED}" ]; then
-      envsubst < "/templates/activemq-domain.ldif" > "/tmp/activemq-domain.ldif"
-      ldapmodify -c -a -f /tmp/activemq-domain.ldif -h localhost -p 10389 -D "uid=admin,ou=system" -w ${ADMIN_PASSWORD}
-
-      envsubst < "/templates/new_openHAB.sh" > "/root/new_openHAB.sh"
-    fi
-    
 fi
 
 enable_replication

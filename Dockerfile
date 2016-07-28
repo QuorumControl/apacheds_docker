@@ -24,6 +24,6 @@ COPY scripts/* /root/
 
 RUN chmod +x /root/*.sh
 
-ENV DOMAIN_NAME="effedil" DOMAIN_SUFFIX="it" ACCESS_CONTROL_ENABLED="true" ACTIVEMQ_ENABLED="true"
+ENV DOMAIN_NAME="effedil" DOMAIN_SUFFIX="it" ACCESS_CONTROL_ENABLED="true"
 
 CMD ["/root/start.sh"]
