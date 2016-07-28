@@ -1,10 +1,14 @@
-FROM traxair/oracle-java7
+FROM java:8-jdk
 
-RUN apt-get update && apt-get install -y xinetd ldap-utils curl jq gettext
+RUN apt-get update \
+    && apt-get install -y xinetd ldap-utils curl jq gettext wget
 
-ADD https://www.apache.org/dist/directory/apacheds/dist/2.0.0-M21/apacheds-2.0.0-M21-amd64.deb /tmp/installer.deb
-RUN dpkg -i /tmp/installer.deb 
-RUN mkdir /templates && mkdir /ldifs
+ENV APACHEDS_VERSION 2.0.0-M21
+
+RUN wget -O /tmp/installer.deb https://www.apache.org/dist/directory/apacheds/dist/$APACHEDS_VERSION/apacheds-$APACHEDS_VERSION-amd64.deb \
+    && dpkg -i /tmp/installer.deb && rm /tmp/installer.deb \
+    && mkdir /templates \
+    && mkdir /ldifs
 
 COPY files/health_check.sh /root/health_check.sh
 COPY files/healthchk /etc/xinetd.d/healthchk
@@ -22,6 +26,4 @@ RUN chmod +x /root/*.sh
 
 ENV DOMAIN_NAME="effedil" DOMAIN_SUFFIX="it" ACCESS_CONTROL_ENABLED="true" ACTIVEMQ_ENABLED="true"
 
-#ENTRYPOINT ["/root/start.sh"]
 CMD ["/root/start.sh"]
-

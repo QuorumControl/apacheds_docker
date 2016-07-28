@@ -3,7 +3,7 @@ apacheds_docker
 
 [ApacheDS Homepage](http://directory.apache.org/apacheds/)
 
-This project run ApacheDS in a docker container with an Oracle Java 7 environment. 
+This project run ApacheDS in a docker container with an Oracle Java 8 environment. 
 
 
 ##How to use this image
@@ -17,7 +17,7 @@ Currently this image uses various environment variables to properly startup, you
 1. `docker run --name apacheds -d -p 10389:10389 42score/apacheds-docker`
 2. Start Apache Directory Studio 
 3. In the bottom left corner there is a section called "Connections" Click on the "LDAP" icon to add a connection to your container. 
-4. Hostname: `192.168.59.103` and Port: `10389`
+4. Hostname: `192.168.99.100` and Port: `10389`
 5. Click "Next"
 6. Bind DN or user: `uid=admin,ou=system` Bind password: `secret` (Default ApacheDS password)
 7. Click "Finish"
@@ -37,16 +37,3 @@ you can change the default admin password 'secret' passing the variable ADMIN_PA
 ```
 ADMIN_PASSWORD=mypassword
 ```
-* Enable ActiveMQ Access Control Entries
-
-you can enable ActiveMQ to use this ApacheDS instance as Authentication-Authorization service
-``` 
-ACTIVEMQ_ENABLED=1
-```
-Once enabled the Broker will authenticate using cn=mqbroker,ou=Services,dc=${DOMAIN_NAME},dc=${DOMAIN_SUFFIX} 
-(password defaults to 'sunflower')
-
-In addition an 'admin' user will be created under ou=User,ou=ActiveMQ,dc=${DOMAIN_NAME},dc=${DOMAIN_SUFFIX}
-this ActiveMQ user will have all administration permissions for Topics and Queues.
-(password defaults to 'sunflower')
-
